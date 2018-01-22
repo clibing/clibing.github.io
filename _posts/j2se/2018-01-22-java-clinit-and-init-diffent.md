@@ -10,8 +10,7 @@ keywords: Java,J2SE
 
 <clinit>：在jvm第一次加载class文件时调用，包括`静态变量初始化语句和静态块的执行`
 
-< init>:在实例创建出来的时候调用，包括调用new操作符；调用Class或java.lang.reflect.Constructor对象的newInstance()方法；调用任何现有对象的clone()方法；通过java.io.ObjectInputStream类的getObject()方法反序列化。
-<!--more-->
+<init>:在实例创建出来的时候调用，包括调用new操作符；调用Class或java.lang.reflect.Constructor对象的newInstance()方法；调用任何现有对象的clone()方法；通过java.io.ObjectInputStream类的getObject()方法反序列化。
 
 ### 详情 
 
