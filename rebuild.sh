@@ -9,12 +9,12 @@ cd ${BLOG_HOME}
 git pull > ${GIT_PULL_LOG}
 GIT_STATUS=`cat /tmp/git.pull.log | awk '{print $1}'`
 if [ ${GIT_STATUS} = 'Already' ]; then
-    echo -e "`date '+%Y-%m-%d %H:%M:%S'` git none update"
+    echo -e "`date '+%Y-%m-%d %H:%M:%S'` git none update">>${GIT_PULL_LOG}
     exit 1
 fi
 
 # kill jekyll
-echo -e "`date '+%Y-%m-%d %H:%M:%S'` kill jekyll"
+echo -e "`date '+%Y-%m-%d %H:%M:%S'` kill jekyll">>${GIT_PULL_LOG}
 pkill -f jekyll
 
 # start serve
