@@ -20,6 +20,3 @@ ps -aef|grep jekyll | grep 'ruby' | awk '{print $2}' | xargs kill -9 >>${GIT_PUL
 
 # start serve
 cd /home/blog/clibing.github.io && /usr/local/rvm/gems/ruby-2.3.0/bin/jekyll serve -H 0.0.0.0 -P 8080 --detach
-
-
-
