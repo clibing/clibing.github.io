@@ -8,7 +8,7 @@ keywords: Java,J2SE
 
 ### Java 类的加载机制
 
-![](/image/class_loading.png)
+![](/image/j2se/class_loading.png)
 
 大致流程: `读取.class文件二进制文件`-->`验证与解析(格式 关键字 关键词 语法 引用 类型转化等等)` --> `初始化` --> `使用` --> `卸载`
 <!--more-->
