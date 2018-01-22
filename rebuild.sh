@@ -15,7 +15,8 @@ fi
 
 # kill jekyll
 echo -e "`date '+%Y-%m-%d %H:%M:%S'` kill jekyll">>${GIT_PULL_LOG}
-pkill -f jekyll
+#pkill -f jekyll
+ps -aef|grep jekyll | grep 'ruby' | awk '{print $2}' | xargs kill -9 >>${GIT_PULL_LOG}
 
 # start serve
 /usr/local/rvm/gems/ruby-2.3.0/bin/jekyll serve -H 0.0.0.0 -P 8080 --detach
