@@ -6,8 +6,6 @@ description: CentOS 6.7_x64 minimal 网络初始化配置
 keywords: CentOS,CentOS6,Linux,网络配置
 ---
 
-![centos6](https://mritd.b0.upaiyun.com/markdown/centos6.png)
-
 ### CentOS 6.7_x64 网络初始化配置
 
 > 最近准备折腾折腾Maven，想在本地CentOS下搭个Nexus私服，无奈CentOS LiveCD 版太大，很多功能也没啥用；so 搞了个minimal版本…..结果安装上无法联网，现记录一下初始化的网络配置。

@@ -6,9 +6,6 @@ description: MySQL 的一些常用操作
 keywords: Linux,MySQL
 ---
 
-> 真心不是搞运维的，命令几天就忘，哎，岁数大了......
-> 常用的一些MySQL命令在这里记录一下撒
-
 <!--more-->
 
 ``` bash

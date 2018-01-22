@@ -6,8 +6,6 @@ description: 记录一下 Linux 下 MySQL 密码强制修改过程
 keywords: Linux,MySQL
 ---
 
-> 好吧好吧，这事不怨我，二逼同事打扰我，就输错了......
-
 ### 一、停掉mysql服务
 
 ``` bash
