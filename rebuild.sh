@@ -25,4 +25,5 @@ rvm install 2.3.0
 rvm use 2.3.0 --default
 gem install bundler
 bundle install
+
 /usr/local/rvm/gems/ruby-2.3.0/bin/jekyll serve -H 0.0.0.0 -P 8080 --detach
