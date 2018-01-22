@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java中init()和clinit()方法的区别
+title: Java中init和clinit方法的区别
 categories: [Java, J2SE]
 description: clinit在jvm第一次加载class时调用，init在实例创建出来的时候调用
 keywords: Java,J2SE
@@ -8,8 +8,7 @@ keywords: Java,J2SE
 
 ### 调用时机 
 
-<clinit>：在jvm第一次加载class文件时调用，包括`静态变量初始化语句和静态块的执行`
-
+<clinit>:在jvm第一次加载class文件时调用，包括`静态变量初始化语句和静态块的执行`
 <init>:在实例创建出来的时候调用，包括调用new操作符；调用Class或java.lang.reflect.Constructor对象的newInstance()方法；调用任何现有对象的clone()方法；通过java.io.ObjectInputStream类的getObject()方法反序列化。
 
 ### 详情 
@@ -32,36 +31,35 @@ keywords: Java,J2SE
 
 ### 举例
 
-
 ````java
-class Single {
-	private static Single single = new Single();
-	public static int count1;
-	public static int count2 = 0;
+    class Single {
+        private static Single single = new Single();
+        public static int count1;
+        public static int count2 = 0;
 
-	private Single() {
-		count1++;
-		count2++;
-	}
-	public static Single getInstance() {
-		return single;
-	}
-}
+        private Single() {
+            count1++;
+            count2++;
+        }
+        public static Single getInstance() {
+            return single;
+        }
+    }
 
-public class Test {
-	public static void main(String[] args) {
-		Single single = Single.getInstance();
-		System.out.println("count1=" + single.count1);
-		System.out.println("count2=" + single.count2);
-	}
-}
+    public class Test {
+        public static void main(String[] args) {
+            Single single = Single.getInstance();
+            System.out.println("count1=" + single.count1);
+            System.out.println("count2=" + single.count2);
+        }
+    }
 ````
 
 输出结果：
 
+` javac Test.java && java Test `
+
 ````text
-clibing:~$:javac Test.java
-clibing:~$:java Test
 clibing:~$:count1=1
 clibing:~$:count2=0
 ````
