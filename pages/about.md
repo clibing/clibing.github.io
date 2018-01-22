@@ -1,8 +1,8 @@
 ---
 layout: page
 title: About
-description: Nothing is impossible to a willing heart!
-keywords: 漠然, mritd
+description: Sharp tools make good work
+keywords: 蜂鸟, clibing
 comments: true
 menu: 关于
 permalink: /about/
