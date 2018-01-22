@@ -7,8 +7,8 @@ GIT_PULL_LOG="/tmp/git.pull.log"
 # git pull
 cd ${BLOG_HOME}
 git pull > ${GIT_PULL_LOG}
-GIT_STATUS=`cat /tmp/git.pull.log | grep 'Already' | awk '{print $1}' `
-if [ "${GIT_STATUS}" = 'Already' ]; then
+GIT_STATUS=`cat /tmp/git.pull.log | grep 'Already' | awk '{print $1" "}'`
+if [ "${GIT_STATUS}" = 'Already ' ]; then
     echo -e "`date '+%Y-%m-%d %H:%M:%S'` git none update">>${GIT_PULL_LOG}
     exit 1
 fi
