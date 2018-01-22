@@ -1,11 +1,11 @@
 # ---------------- #
 #   Main Configs   #
 # ---------------- #
-title: 美好的一天
+title: 蜂鸟
 author: clibing
 subtitle: "Sharp tools make good work"
 description: "每一个成功者都有一个开始。勇于开始，才能找到成功的路。 "
-keywords: 美好的一天
+keywords: 蜂鸟, clibing, hummingbird
 url: "https://clibing.linuxcrypt.cn"
 date_format: "ordinal"
 favicon: /favicon.ico
