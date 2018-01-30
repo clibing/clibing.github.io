@@ -40,3 +40,14 @@ keywords: Java,函数式接口
 * Consumer<T> 具有唯一一个抽象方法叫作`accept`,代表的函数描述符是`T->void`。
 * Supplier<T> 具有唯一一个抽象方法叫作`get`,代表的函数描述符是`()->T`。或者,`Callable<T>`具有唯一一个抽象方法叫作`call`,代表的函数描述符是`()->T`。
 * BiFunction<T,U,R> 具有唯一一个抽象方法叫作`apply`,代表的函数描述符是`(T,U)->R`。
+
+### 总结
+
+| 使用案例 | Lambda 的例子 | 对应的函数式接口 |
+| :---------: | :-------- | :--------- |
+| 布尔表达式 | (List<String> list) -> list.isEmpty() | Predicate<List<String>> |
+| 创建对象 | () -> new Apple(10) | Supplier<Apple> |
+| 消费一个对象 | (Apple a) -> System.out.println(a.getWeight()) | Consumer<Apple>
+| 从一个对象中选择/提取 | (String s) -> s.length() | Function<String, Integer> 或 ToIntFunction<String>|
+| 合并两个值 | (int a, int b) -> a * b | IntBinaryOperator |
+| 比较两个对象 | (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()) | Comparator<Apple> 或 BiFunction<Apple, Apple, Integer> 或 ToIntBiFunction<Apple, Apple> |
