@@ -111,6 +111,30 @@ git push
     git push -f
     ```  
 
++ 当撤销后想再次撤销时
+
+	```
+	root@rock64:/share/dockerfile# git reflog
+	42d8afa HEAD@{0}: commit: add postgresql and docker-clean shell
+	a07c7da HEAD@{1}: reset: moving to origin/master
+	6fe27f6 HEAD@{2}: reset: moving to 6fe27f6
+	a07c7da HEAD@{3}: reset: moving to origin/master
+	6fe27f6 HEAD@{4}: commit: add postgresql and add clean docker no used or exist
+	a07c7da HEAD@{5}: commit: add armhf and alpine minirootfs
+	a9a7a65 HEAD@{6}: commit: fix glibc lib
+	863b8f3 HEAD@{7}: commit: add nginx mariadb dockerfile
+	b845e3d HEAD@{8}: commit: add arm64v8 base
+	161e612 HEAD@{9}: commit: rename
+	3c1b2cc HEAD@{10}: commit: add build date
+	0acafff HEAD@{11}: commit: add build base alpine
+	e4b6400 HEAD@{12}: commit: rename rock64 to aarch64(arm64v8)
+	bd3a2e2 HEAD@{13}: commit: add armhf x86_64 from private version server
+	a6fbf52 HEAD@{14}: commit (initial): add rock64 dockerfile from respi
+	# 进入到指定版本
+	git reset --hard 6fe27f6
+	```
+	
+
 ### 总结
 
 以上4种状态的撤销我们都用到了同一个命令`git reset --hard`，前2种状态的用法甚至完全一样，所以要掌握了`git reset --hard`这个命令的用法
