@@ -284,3 +284,11 @@ tail通过取模，回归到初始位置，我们判断tail+1是否等于head，
 
 ### 总结
 ArrayDeque的主要优势在于尾部添加元素，头部出队元素的效率是比较高的，``内部使用位操作来判断队满条件，效率相对有所提高``，并且该结构使用动态扩容，所以对队列长度也是没有限制的。在具体情况下，适时选择。
+
+### 参考
+
+* [深入理解循环队列----循环数组实现ArrayDeque](http://blog.csdn.net/qq_35326718/article/details/72972159)
+* [ArrayDeque源代码分析](https://www.cnblogs.com/mthoutai/p/7371602.html)
+* [java 集合框架(十五)Deque](https://www.cnblogs.com/bushi/p/6681543.html)
+* [ArrayDeque类的使用详解](http://blog.csdn.net/skh2015java/article/details/74840513)
+* [Java 容器源码分析之 Deque 与 ArrayDeque](https://www.cnblogs.com/wxd0108/p/7366234.html)
