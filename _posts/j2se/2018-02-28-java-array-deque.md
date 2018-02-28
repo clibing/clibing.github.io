@@ -33,7 +33,7 @@ ArrayDeque实现了Deque的接口以及上图其他的接口，因此ArrayDeque�
 
 第二个元素入队
 
-![](/image/j2se/head_tail_secend.png)
+![](/image/j2se/head_tail_second.png)
 
 第n个元素入队
 
