@@ -36,5 +36,5 @@ gem 'html-pipeline', versions['html-pipeline']
 gem 'listen', versions['listen']
 gem 'sass', versions['sass']
 gem 'safe_yaml', versions['safe_yaml']
-gem 'nokogiri', '1.8.1' 
+gem 'nokogiri', '1.8.2' 
 gem 'html-proofer'
