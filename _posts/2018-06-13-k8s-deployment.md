@@ -58,11 +58,17 @@ spec:
           protocol: TCP
         # 容器资源分配
         resources: 
+          # requests主要作为pod调度时的参考依据
           requests: 
-            cpu: 0.05 
+            # cpu 的频率 250m赫兹 进制1000
+            cpu: 250m
+            # 最低要求16M 进制1024;
             memory: 16Mi 
+          # limits主要用来限制每个容器使用资源的最大值
           limits: 
-            cpu: 0.1 
+            # 最多使用0.1个核
+            cpu: 1 
+            # 最多使用32M
             memory: 32Mi
         # 表示container是否以及处于可接受service请求的状态了。如果ReadinessProbe失败，endpoints controller将会从service所匹配到的endpoint列表中移除关于这个container的IP地址。
         # 因此对于Service匹配到的endpoint的维护其核心是ReadinessProbe。默认Readiness的初始值是Failure，如果一个container没有提供Readiness则被认为是Success。
