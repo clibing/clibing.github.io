@@ -121,7 +121,9 @@ spec:
 ```shell
 kubectl rollout status deployment/linuxcrypt-web
 kubectl describe deployment linuxcrypt-web
+```
 
+```
 Name:                   linuxcrypt-web
 Namespace:              default
 CreationTimestamp:      Thu, 07 Jun 2018 14:45:08 +0800
@@ -153,8 +155,8 @@ Events:
   Type    Reason             Age   From                   Message
   ----    ------             ----  ----                   -------
   Normal  ScalingReplicaSet  1h    deployment-controller  Scaled up replica set linuxcrypt-web-d5f8c55c9 to
-
 ```
+
 * 升级
 ```shell
 kubectl set image deployment linuxcrypt-web linuxcrypt-web=image-name:tag
