@@ -7,6 +7,7 @@ keywords: kubernetes,Linux
 ---
 
 部署 调度
+
 ```yml
 apiVersion: apps/v1
 kind: Deployment
