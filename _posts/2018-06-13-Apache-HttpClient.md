@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Kubernetes Deployment yml说明
-categories: [Kubernetes, Linux]
-description: Kubernetes Deployment 部署文件说明，方便快速理解
-keywords: kubernetes,Linux
+title: HttpClient 工具类
+categories: [Java, HTTP]
+description: HttpClient 工具类
+keywords: java,http
 ---
 
 #### HttpClient 工具类
@@ -342,7 +342,46 @@ public final class HttpClients {
 }
 ```
 
-#### 分析
+#### 总结
+
+1. `DefaultMaxPerRoute`和`MaxTotal`配置
+  DefaultMaxPerRoute是根据连接到的主机对MaxTotal的一个细分；比如：
+  MaxtTotal=400 DefaultMaxPerRoute=200
+  而我只连接到http://a.com时，到这个主机的并发最多只有200；而不是400；
+  而我连接到http://a.com 和 http://b.com时，到每个主机的并发最多只有200；即加起来是400（但不能超过400；所以起作用的设置是DefaultMaxPerRoute。
+2. 超时设置
+  * connectionRequestTimeout: 从连接池中获取请求连接的超时时间 单位毫秒, -1: 系统默认的超时时间，内核级配置; 0: 无限制。
+  * connectTimeout: 默认连接超时时间
+  * soTimeout: 默认socket读取数据超时时间,具体的长耗时请求中(如文件传送等)必须覆盖此设置
+3. 策略
+  * pool.evictExpiredConnections(true): 后台启动一个线程，进行超时连接处理
+  * 当获取可用连接时，采用LRU进行处理连接。
+4. 池中池
+  * httpclient在初始化时，设置的MaxTotal的参数为总的连接池
+  * 在最大的池中，根据主机的名字(route)进行小池的划分
+  * 在动态获取可用连接的时候采用`LRU`算法，清理或者释放连接
+5. available集合和leased集合
+  * 见 org.apache.http.pool.AbstractConnPool
+  * leased集合当前租用的连接
+  * available集合当前可用的连接
+  * LRU会根据MaxTotal、leased集合总数、available集合总数进行LRU淘汰。 
+6. Future<CPoolEntry> 进行一步接收数据
+7. 持久连接
+  * HTTP/1.1采取持久连接的方式替代了Keep-Alive
+  * HTTP/1.1的连接默认情况下都是持久连接。如果要显式关闭，需要在报文中加上Connection:Close首部。即在HTTP/1.1中，所有的连接都进行了复用
+  * 两种方式，空闲的持久连接也可以随时被客户端与服务端关闭。不发送Connection:Close不意味着服务器承诺连接永远保持打开。
+8. EntityUtils.toString(HttpEntity, ...)和EntityUtils.consume(HttpEntity);
+  * 注意此方法会关闭InputStream，因为是多路复用，每次读取完必须关闭，否则不能被复用
+  * CloseableHttpResponse在每次请求完进行reponse.close()
+9. HttpClient不能关闭，否则连接都会重新建立，会发起tcp的3次握手连接和4次握手断开
+
+#### 测试
+
+抓包测试池化后网络连接3次握手建立连接和4次握手断开连接(抓包只看到3次)
+
+![](/image/tcp/tcp三次握手.png)
+
+#### 参考
 
 [参考1](https://blog.csdn.net/undergrowth/article/details/77341760)
 [参考2](https://blog.csdn.net/undergrowth/article/details/77203668)
