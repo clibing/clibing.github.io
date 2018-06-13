@@ -160,7 +160,7 @@ Events:
 * 升级
 ```shell
 kubectl set image deployment linuxcrypt-web linuxcrypt-web=image-name:tag
-``
+```
 * 暂停升级
 ```shell
 kubectl rollout pause deployment linuxcrypt-web
