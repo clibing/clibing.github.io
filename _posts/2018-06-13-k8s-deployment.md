@@ -161,33 +161,40 @@ kubectl describe deployment linuxcrypt-web
 ```shell
 kubectl set image deployment linuxcrypt-web linuxcrypt-web=image-name:tag
 ```
+
 * 暂停升级
 ```shell
 kubectl rollout pause deployment linuxcrypt-web
 ```
+
 * 继续升级 
 ```shell
 kubectl rollout resume deployment linuxcrypt-web
 ```
+
 * 回滚
 ```shell
 kubectl rollout undo deployment linuxcrypt-web
 ```
+
 * 查看deployments版本 
 ```shell
 kubectl rollout history deployment
 kubectl rollout history deployment linuxcrypt-web
-
-deployments "linuxcrypt-web"
-REVISION  CHANGE-CAUSE
-1         <none>
-2         <none>
-3         <none>
 ```
+```
+  deployments "linuxcrypt-web"
+  REVISION  CHANGE-CAUSE
+  1         <none>
+  2         <none>
+  3         <none>
+```
+
 * 回滚到指定版本
 ```shell
 kubectl rollout undo deployment linuxcrypt-web --to-revision=2 # 2 从查看deployments版本查看
 ```
+
 * 更改副本数
 ```shell
 kubectl scale deployment xxx-m --replicas 1 -n linuxcrypt-web
