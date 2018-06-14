@@ -66,7 +66,7 @@ spec:
             memory: 16Mi 
           # limits主要用来限制每个容器使用资源的最大值
           limits: 
-            # 最多使用0.1个核
+            # 最多使用1个核
             cpu: 1 
             # 最多使用32M
             memory: 32Mi
@@ -82,7 +82,7 @@ spec:
           httpGet:
             path: /health
             port: 8080
-            # host: dig.chouti.com
+            # host: www.linuxcrypt.cn
             # scheme: HTTP
           # 用来表示初始化延迟的时间，也就是告诉监测从多久之后开始运行，单位是秒
           initialDelaySeconds: 60
@@ -124,37 +124,37 @@ kubectl describe deployment linuxcrypt-web
 ```
 
 ```
-Name:                   linuxcrypt-web
-Namespace:              default
-CreationTimestamp:      Thu, 07 Jun 2018 14:45:08 +0800
-Labels:                 app=linuxcrypt-web
-Annotations:            deployment.kubernetes.io/revision=6
-Selector:               app=linuxcrypt-web
-Replicas:               4 desired | 4 updated | 4 total | 4 available | 0 unavailable
-StrategyType:           RollingUpdate
-MinReadySeconds:        0
-RollingUpdateStrategy:  0 max unavailable, 1 max surge
-Pod Template:
-  Labels:  app=linuxcrypt-web
-  Containers:
-   linuxcrypt-web:
-    Image:        hub.docker.com/linuxcrypt-web:2.0.0-20180607.0910
-    Port:         8080/TCP
-    Host Port:    0/TCP
-    Environment:  <none>
-    Mounts:       <none>
-  Volumes:        <none>
-Conditions:
-  Type           Status  Reason
-  ----           ------  ------
-  Progressing    True    NewReplicaSetAvailable
-  Available      True    MinimumReplicasAvailable
-OldReplicaSets:  <none>
-NewReplicaSet:   linuxcrypt-web-d5f8c55c9 (4/4 replicas created)
-Events:
-  Type    Reason             Age   From                   Message
-  ----    ------             ----  ----                   -------
-  Normal  ScalingReplicaSet  1h    deployment-controller  Scaled up replica set linuxcrypt-web-d5f8c55c9 to
+  Name:                   linuxcrypt-web
+  Namespace:              default
+  CreationTimestamp:      Thu, 07 Jun 2018 14:45:08 +0800
+  Labels:                 app=linuxcrypt-web
+  Annotations:            deployment.kubernetes.io/revision=6
+  Selector:               app=linuxcrypt-web
+  Replicas:               4 desired | 4 updated | 4 total | 4 available | 0 unavailable
+  StrategyType:           RollingUpdate
+  MinReadySeconds:        0
+  RollingUpdateStrategy:  0 max unavailable, 1 max surge
+  Pod Template:
+    Labels:  app=linuxcrypt-web
+    Containers:
+     linuxcrypt-web:
+      Image:        hub.docker.com/linuxcrypt-web:2.0.0-20180607.0910
+      Port:         8080/TCP
+      Host Port:    0/TCP
+      Environment:  <none>
+      Mounts:       <none>
+    Volumes:        <none>
+  Conditions:
+    Type           Status  Reason
+    ----           ------  ------
+    Progressing    True    NewReplicaSetAvailable
+    Available      True    MinimumReplicasAvailable
+  OldReplicaSets:  <none>
+  NewReplicaSet:   linuxcrypt-web-d5f8c55c9 (4/4 replicas created)
+  Events:
+    Type    Reason             Age   From                   Message
+    ----    ------             ----  ----                   -------
+    Normal  ScalingReplicaSet  1h    deployment-controller  Scaled up replica set linuxcrypt-web-d5f8c55c9 to
 ```
 
 * 升级
@@ -187,5 +187,9 @@ REVISION  CHANGE-CAUSE
 * 回滚到指定版本
 ```shell
 kubectl rollout undo deployment linuxcrypt-web --to-revision=2 # 2 从查看deployments版本查看
+```
+* 更改副本数
+```shell
+kubectl scale deployment xxx-m --replicas 1 -n linuxcrypt-web
 ```
 
