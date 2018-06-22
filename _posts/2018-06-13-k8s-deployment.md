@@ -40,6 +40,8 @@ spec:
       maxSurge: 1
       # 滚表示滚动升级时允许的最大Unavailable的pod个数。由于replicas为3,则整个升级,pod个数在2-4个之间
       maxUnavailable: 0
+  # 滚动升级时90s后认为该pod就绪 
+  minReadySeconds: 90 
   template:
     metadata:
       labels:
@@ -114,6 +116,8 @@ spec:
           # 用来表示监测的超时时间，如果超过这个时长后，则认为监测失败
           timeoutSeconds: 10
 ```
+
+`livenessProbe、readinessProbe: 二者结合，通过健康监测，在滚动升级时会验证pod是否可用。如果不可用，在升级时会杀掉所有进程自动创建，然后自动检测时，如果不可用会根据策略自动处理，当前是重建`
 
 常用命令
 
