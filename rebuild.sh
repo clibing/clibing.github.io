@@ -16,12 +16,13 @@ fi
 echo -e "`date '+%Y-%m-%d %H:%M:%S'` kill jekyll">>${GIT_PULL_LOG}
 ps -aef|grep jekyll | grep 'ruby' | awk '{print $2}' | xargs kill -9 >>${GIT_PULL_LOG}
 
+ruby-version=2.4.2
 # start serve
 # rvm requirements
-# rvm install 2.4.2 
-# rvm use 2.4.2 --default 
+# rvm install ${ruby-version}
+# rvm use ${ruby-version} --default 
 # gem install bundler 
 bundle update
 # bundle install
 
-/usr/local/rvm/gems/ruby-2.3.0/bin/jekyll serve -H 0.0.0.0 -P 8080 --detach 
+/usr/local/rvm/gems/${ruby-version}/bin/jekyll serve -H 0.0.0.0 -P 8080 --detach 
