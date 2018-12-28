@@ -72,12 +72,12 @@ permalink: /:year/:month/:day/:title/
 gems:
     - rouge
     - jekyll-sitemap
-#    - jekyll-seo-tag
+    - jekyll-seo-tag
 #    - jekyll-html-pipeline
     - jekyll-paginate
     - jekyll-feed
     - jemoji
-#    - jekyll-mentions
+    - jekyll-mentions
     - jekyll-github-metadata
 collections:
     wiki:
@@ -119,4 +119,5 @@ skill_mobile_app_keywords: [Java]
 # ---------------- #
 # Github metadata  #
 # ---------------- #
-repository: clibing/clibing.github.io
+github: [metadata]
+# repository: clibing/clibing.github.io
